@@ -57,6 +57,13 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+web = [
+  "fastapi>=0.115,<1",
+  "uvicorn>=0.30,<1",
+  "pydantic>=2.8,<3",
+  "PyYAML>=6,<7",
+  "filelock>=3.16,<4",
+]
 dev = [
   "pytest",
   "statsmodels",
@@ -112,12 +119,16 @@ client = [
 # InvalidDistribution: Invalid distribution metadata: unrecognized or malformed field 'license-file'
 # To solve this problem, we added license-files here. Refs: https://github.com/pypa/twine/issues/1216
 [tool.setuptools]
-packages = [
-  "qlib",
-]
 license-files = []
 
+[tool.setuptools.packages.find]
+include = ["qlib*", "qlib_trader*"]
+
+[tool.setuptools.package-data]
+"qlib_trader.web" = ["static/*.html", "static/*.css", "static/*.js", "requirements*.txt", "README.md", "TESTING.md"]
+
 [project.scripts]
+qlib-console = "qlib_trader.web.__main__:main"
 qrun = "qlib.cli.run:run"
 
 [tool.setuptools_scm]

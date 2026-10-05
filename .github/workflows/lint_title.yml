@@ -23,10 +23,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '24'
 
       - name: Install commitlint
-        run: npm install --save-dev @commitlint/{config-conventional,cli}
+        run: npm install --save-dev --ignore-scripts @commitlint/config-conventional@21.2.3 @commitlint/cli@21.2.3
 
       - name: Validate PR Title with commitlint
         env:

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      name="description"
+      content="Qlib 本地量化研究工作台：配置工作流、检查数据、运行实验、查看真实回测结果。"
+    />
+    <title>Qlib Studio · 量化研究工作台</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23d8f36a'/%3E%3Cpath d='M8 22V10h5v12zm7 0V6h4v16zm6 4V14h4v12z' fill='%23151a20'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="/static/style.css" />
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+    <div id="app">
+      <div class="boot-state">
+        <span class="spinner" aria-hidden="true"></span>
+        <h1>Qlib Studio</h1>
+        <p>正在连接本地研究引擎…</p>
+      </div>
+    </div>
+    <div
+      id="toasts"
+      class="toasts"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+    <dialog id="preview-dialog" aria-labelledby="dialog-title">
+      <div class="dialog-heading">
+        <h2 id="dialog-title">工作流 YAML</h2>
+        <button
+          type="button"
+          class="icon-button"
+          data-action="close-dialog"
+          aria-label="关闭预览"
+        >
+          ×
+        </button>
+      </div>
+      <div id="dialog-body"></div>
+      <div class="dialog-footer">
+        <button type="button" class="button" data-action="download-yaml">
+          下载 YAML</button
+        ><button
+          type="button"
+          class="button primary"
+          data-action="close-dialog"
+        >
+          完成
+        </button>
+      </div>
+    </dialog>
+    <noscript
+      >这个工作台需要启用 JavaScript 才能管理 Qlib 研究工作流。</noscript
+    >
+  </body>
+</html>

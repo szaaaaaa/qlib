@@ -1,3 +1,18 @@
+# Qlib 可视化控制台开发分支
+
+本分支在原有 `qlib_trader` 基础上增加中文本地 Web 控制台，覆盖数据检查、因子查询、模型训练、预测、策略回测、实验比较与任务管理。
+
+```bash
+python -m pip install -e '.[web]'
+python -m qlib_trader.web
+```
+
+浏览器打开 http://127.0.0.1:8765 。请先准备本地 Qlib 行情数据，界面不会用模拟收益冒充回测结果，也不连接实盘。
+
+[控制台 README：完整启动、功能覆盖、开发架构、安全边界与测试说明](qlib_trader/web/README.md)
+
+---
+
 [![Python Versions](https://img.shields.io/pypi/pyversions/pyqlib.svg?logo=python&logoColor=white)](https://pypi.org/project/pyqlib/#files)
 [![Platform](https://img.shields.io/badge/platform-linux%20%7C%20windows%20%7C%20macos-lightgrey)](https://pypi.org/project/pyqlib/#files)
 [![PypI Versions](https://img.shields.io/pypi/v/pyqlib)](https://pypi.org/project/pyqlib/#history)
