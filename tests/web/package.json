@@ -1,0 +1,14 @@
+{
+  "name": "qlib-console-dom-tests",
+  "private": true,
+  "description": "Optional non-visual DOM integration tests against the local FastAPI console",
+  "scripts": {
+    "test:dom": "node frontend_dom.cjs"
+  },
+  "devDependencies": {
+    "jsdom": "30.1.2"
+  },
+  "engines": {
+    "node": ">=22.12"
+  }
+}

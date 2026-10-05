@@ -1,0 +1,46 @@
+name: Test visual console
+
+on:
+  pull_request:
+    paths:
+      - 'qlib_trader/**'
+      - 'tests/web/**'
+      - 'pyproject.toml'
+      - '.github/workflows/test_visual_console.yml'
+  push:
+    branches: ['feat/visual-console']
+    paths:
+      - 'qlib_trader/**'
+      - 'tests/web/**'
+      - 'pyproject.toml'
+      - '.github/workflows/test_visual_console.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  api-and-worker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        python: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install optional console test dependencies
+        run: python -m pip install -r qlib_trader/web/requirements-dev.txt numpy pandas
+      - name: Install optional DOM test tooling
+        run: npm --prefix tests/web ci --ignore-scripts
+      - name: Console unit, API and real-API DOM tests (no market data downloads)
+        run: python -m pytest tests/web -q
+      - name: Python formatting
+        run: python -m black --check --line-length 120 qlib_trader/web tests/web
+      - name: JavaScript syntax
+        run: node --check qlib_trader/web/static/app.js

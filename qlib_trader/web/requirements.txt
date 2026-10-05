@@ -1,0 +1,6 @@
+# UI/API only. Install Qlib itself from the repository for actual research jobs.
+fastapi>=0.115,<1
+uvicorn>=0.30,<1
+pydantic>=2.8,<3
+PyYAML>=6,<7
+filelock>=3.16,<4
